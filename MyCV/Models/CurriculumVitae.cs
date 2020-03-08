@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyCV.Models.Criteria;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -33,9 +34,42 @@ namespace MyCV.Models
             Skills = new List<Skill>();
         }
 
-        public List<Experience> GetEducations()
+        public List<GroupedExperienceAndCategory> GetEducations()
         {
-            return Experience.Where(e => e.Category.Category == "Education").ToList();
+            var educationCriteria = new EducationCriteria();
+            var orderByEndDateCriteria = new OrderByEndDateCriteria();
+            var bothCriteria = new AndCriteria(educationCriteria, orderByEndDateCriteria);
+            var listOfEducations = bothCriteria.MeetCriteria(Experience);
+
+            var listofGroupedExperienceAndCategories = new List<GroupedExperienceAndCategory>()
+            {
+               new GroupedExperienceAndCategory("Uddannelse", listOfEducations.ToList())
+            };
+
+            return listofGroupedExperienceAndCategories;
+
+
+
+
         }
+
+
+        public List<GroupedExperienceAndCategory> GetExperiencesWithoutEducation()
+        {
+            var orderByDateCriteria = new OrderByEndDateCriteria();
+            var experiencesWithoutEducation = Experience.Where(exp => exp.Category.Category != "Uddannelse");
+
+            var groupedAndOrdered =  experiencesWithoutEducation.GroupBy(
+                    exp => exp.Category,
+                    (category, experiences) => new GroupedExperienceAndCategory(
+                        category.Category,
+                        orderByDateCriteria.MeetCriteria(experiences.ToList()).ToList()
+                    )
+                    );
+
+            return groupedAndOrdered.OrderBy(exp => experiencesWithoutEducation.First(cat => cat.Category.Category == exp.Name).Category.Order).ToList();
+
+        }
+
     }
 }

@@ -36,6 +36,8 @@ namespace MyCV.Models
             EndDate = endDate;
         }
 
+        public string Website { get; set; }
+
         public string FullDate => (
             StartDate == EndDate
             ? StartDate.Year.ToString(CultureInfo.CurrentCulture)

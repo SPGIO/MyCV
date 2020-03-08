@@ -9,6 +9,8 @@
     <Compile Remove="Migrations\20200305183458_UpdatingPersonalInformationWithImageFileAnAddress.Designer.cs" />
     <Compile Remove="Migrations\20200308100616_RemovingEducation.cs" />
     <Compile Remove="Migrations\20200308100616_RemovingEducation.Designer.cs" />
+    <Compile Remove="Migrations\20200308101336_RemovingWorkExperience.cs" />
+    <Compile Remove="Migrations\20200308101336_RemovingWorkExperience.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

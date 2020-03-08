@@ -10,8 +10,8 @@ using MyCV.Data;
 namespace MyCV.Migrations
 {
     [DbContext(typeof(MyCVContext))]
-    [Migration("20200308101336_RemovingWorkExperience")]
-    partial class RemovingWorkExperience
+    [Migration("20200308124439_AddingWebsiteToExperience")]
+    partial class AddingWebsiteToExperience
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -102,6 +102,9 @@ namespace MyCV.Migrations
 
                     b.Property<string>("Title")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Website")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");

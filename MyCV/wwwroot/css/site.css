@@ -200,6 +200,11 @@ body {
     margin: 0;
 }
 
+.education-table-description {
+    margin-bottom: 0px !important;
+}
+
+
 .measurables-container {
     border: 1px dotted var(--blue);
     padding: 5px;

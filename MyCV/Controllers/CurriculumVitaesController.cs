@@ -36,9 +36,12 @@ namespace MyCV.Controllers
             }
 
             var curriculumVitae = await _context.CurriculumVitae
-                .Include(i=> i.PersonalInformation)
-                .Include(i=> i.PersonalInformation.ImageFile)
-                .FirstOrDefaultAsync(m => m.Id == id)
+                .Include(cv           => cv.PersonalInformation)
+                .Include(cv           => cv.PersonalInformation.ImageFile)
+                .Include(cv           => cv.Experience)
+                    .ThenInclude(exp  => exp.Category)
+                .Include(cv           => cv.Skills)
+                .FirstOrDefaultAsync(m   => m.Id == id)
                 .ConfigureAwait(false);
             if (curriculumVitae == null)
             {

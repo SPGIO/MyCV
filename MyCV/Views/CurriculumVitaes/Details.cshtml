@@ -20,7 +20,7 @@
                 </h5>
                 <table class="float-right">
                     <tr>
-                        <td class="text-right printable-text-normal-size font-weight-bold text-uppercase">Contact</td>
+                        <td class="text-right printable-text-normal-size font-weight-bold text-uppercase">Kontakt</td>
                     </tr>
                     <tr>
                         <td class="text-right printable-text-normal-size">@Html.DisplayFor(model => model.PersonalInformation.PhoneNumber)</td>
@@ -64,47 +64,21 @@
                 </p>
             </div>
             <div class="col-5">
-                <div class="cv-header-border">
-                    <h6 class="cv-header printable-text-header-size">Uddannelse</h6>
-                </div>
-                @foreach (var item in Model.GetEducations())
-                {
-                    await Html.RenderPartialAsync("_ExperienceItemView", item).ConfigureAwait(false);
+                @{
+                    await Html.RenderPartialAsync("_ExperienceItemView", Model.GetEducations()).ConfigureAwait(false);
                 }
             </div>
         </div>
         <div class="row">
             <div class="col-7">
-                <div class="cv-header-border">
-                    <h6 class="cv-header printable-text-header-size">Erhvervserfaring</h6>
-                </div>
-                @foreach (var item in Model.Experience)
-                {
-                    await Html.RenderPartialAsync("_ExperienceItemView", item).ConfigureAwait(false);
+                @{
+                    await Html.RenderPartialAsync("_ExperienceItemView", Model.GetExperiencesWithoutEducation()).ConfigureAwait(false);
                 }
             </div>
             <div class="col-5">
 
                 <div class="measurables-container">
-                    <div class="row section">
-                        @* Courses Section *@
-                        <div class="col-12">
-                            <h6 class="cv-header printable-text-header-size">Kurser</h6>
-                        </div>
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <p class="education-table-title printable-text-normal-size">Scrum Certifikat</p>
-                                </div>
-                                <div class="col-md-12">
-                                    <p class="education-table-company printable-text-normal-size">clean machine</p>
-                                </div>
-                                <div class="col-md-12">
-                                    <p class="education-table-year printable-text-normal-size">2018, 4 uger</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                   
                     <div class="row section">
                         @* IT Section *@
                         <div class="col-12">
@@ -112,42 +86,23 @@
                         </div>
                         <div class="col-12">
                             <div class="row" style="line-height: 1.15;">
-                                <div class="col-6"><p class="education-table-title printable-text-normal-size">Design patterns</p></div>
-                                <div class="col-6">
-                                    <i class="printable-text-normal-size fas fa-circle rating checked"></i>
-                                    <i class="printable-text-normal-size fas fa-circle rating checked"></i>
-                                    <i class="printable-text-normal-size fas fa-circle rating"></i>
-                                    <i class="printable-text-normal-size fas fa-circle rating"></i>
-                                    <i class="printable-text-normal-size fas fa-circle rating"></i>
-                                    <i class="printable-text-normal-size fas fa-circle rating"></i>
-                                </div>
-                                <div class="col-6"><p class="education-table-title printable-text-normal-size">MSSQL</p></div>
-                                <div class="col-6">
-                                    <i class="printable-text-normal-size fas fa-circle rating checked"></i>
-                                    <i class="printable-text-normal-size fas fa-circle rating checked"></i>
-                                    <i class="printable-text-normal-size fas fa-circle rating checked"></i>
-                                    <i class="printable-text-normal-size fas fa-circle rating"></i>
-                                    <i class="printable-text-normal-size fas fa-circle rating"></i>
-                                    <i class="printable-text-normal-size fas fa-circle rating"></i>
-                                </div>
-                                <div class="col-6"><p class="education-table-title printable-text-normal-size">TTD</p></div>
-                                <div class="col-6">
-                                    <i class="printable-text-normal-size fas fa-circle rating checked"></i>
-                                    <i class="printable-text-normal-size fas fa-circle rating checked"></i>
-                                    <i class="printable-text-normal-size fas fa-circle rating checked"></i>
-                                    <i class="printable-text-normal-size fas fa-circle rating checked"></i>
-                                    <i class="printable-text-normal-size fas fa-circle rating checked"></i>
-                                    <i class="printable-text-normal-size fas fa-circle rating"></i>
-                                </div>
-                                <div class="col-6"><p class="education-table-title printable-text-normal-size">Clean Code </p></div>
-                                <div class="col-6">
-                                    <i class="printable-text-normal-size fas fa-circle rating checked"></i>
-                                    <i class="printable-text-normal-size fas fa-circle rating checked"></i>
-                                    <i class="printable-text-normal-size fas fa-circle rating checked"></i>
-                                    <i class="printable-text-normal-size fas fa-circle rating checked"></i>
-                                    <i class="printable-text-normal-size fas fa-circle rating checked"></i>
-                                    <i class="printable-text-normal-size fas fa-circle rating checked"></i>
-                                </div>
+                                @foreach (var skill in Model.Skills.OrderByDescending(x=> x.Rating))
+                                {
+                                    <div class="col-6"><p class="education-table-title printable-text-normal-size">@skill.Title</p></div>
+                                    <div class="col-6">
+                                        @for (int rating = 0; rating < 6; rating++)
+                                        {
+                                            if (rating < skill.Rating)
+                                            {
+                                                <i class="printable-text-normal-size fas fa-circle rating checked"></i>
+                                            }
+                                            else
+                                            {
+                                                <i class="printable-text-normal-size fas fa-circle rating"></i>
+                                            }
+                                        }
+                                    </div>
+                                }
                             </div>
                         </div>
                     </div>
