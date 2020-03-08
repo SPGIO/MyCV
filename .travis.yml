@@ -1,0 +1,8 @@
+language: csharp
+mono: none
+dotnet: 3.1.102
+solution: MyCV.sln
+
+script:
+  - dotnet restore
+  - dotnet test
