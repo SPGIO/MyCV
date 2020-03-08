@@ -10,13 +10,13 @@ namespace MyCVTest
         public void FullName()
         {
             var personalInformation = new PersonalInformation();
-            personalInformation.FirstName = "Simon";
-            personalInformation.LastName = "Svensson";
-            Assert.IsTrue(personalInformation.FullName == "Simon Svensson");
+            personalInformation.FirstName = "Joe";
+            personalInformation.LastName = "Joejoe";
+            Assert.IsTrue(personalInformation.FullName == "Joe Joejoe");
 
-            personalInformation.MiddleName = "Gyldendal";
+            personalInformation.MiddleName = "Test";
 
-            Assert.IsTrue(personalInformation.FullName == "Simon Gyldendal Svensson");
+            Assert.IsTrue(personalInformation.FullName == "Joe Test Joejoe");
         }
 
 
@@ -33,9 +33,8 @@ namespace MyCVTest
         public void EndDateBeginsBeforeStartDate()
         {
 
-            var work = new WorkExperience("Software Developer",
-                                      "Gained a lot of experience",
-                                      "IT-Minds",
+            var work = new Experience("Software Developer",
+                                      "Software Company",
                                       new System.DateTime(2020, 03, 03),
                                       new System.DateTime(2020, 03, 02));
         }
@@ -43,9 +42,8 @@ namespace MyCVTest
         [TestMethod]
         public void EndDateAndStartDateHasValidDates()
         {
-            var work = new WorkExperience("Software Developer",
-                                      "Gained a lot of experience",
-                                      "IT-Minds",
+            var work = new Experience("Software Developer",
+                                      "Software Company",
                                       new System.DateTime(2020, 03, 03),
                                       new System.DateTime(2020, 03, 03));
             Assert.IsTrue(work.StartDate <= work.EndDate);
@@ -54,9 +52,8 @@ namespace MyCVTest
         [TestMethod]
         public void PrintableDatesSameDate()
         {
-            var work = new WorkExperience("Software Developer",
-                                      "Gained a lot of experience",
-                                      "IT-Minds",
+            var work = new Experience("Software Developer",
+                                      "Software Company",
                                       new System.DateTime(2020, 03, 03),
                                       new System.DateTime(2020, 03, 03));
 
@@ -67,9 +64,8 @@ namespace MyCVTest
         [TestMethod]
         public void PrintableDateDifferentDate()
         {
-            var work = new WorkExperience("Software Developer",
-                                      "Gained a lot of experience",
-                                      "IT-Minds",
+            var work = new Experience("Software Developer",
+                                      "Software Company",
                                       new System.DateTime(2017, 03, 03),
                                       new System.DateTime(2020, 03, 03));
 
