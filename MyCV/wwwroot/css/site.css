@@ -1,0 +1,303 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+    color: #0366d6;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.border-top {
+    border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+    font-size: 1rem;
+    line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
+}
+
+
+
+
+
+
+
+
+/* Printing 
+-------------------------------------------------- */
+body {
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    /*background-color: #FAFAFA !important;*/
+    font: 12pt !important;
+}
+
+* {
+    box-sizing: border-box !important;
+    -moz-box-sizing: border-box !important;
+}
+
+@page {
+    size: A4 portrait !important;
+    margin: 0 !important;
+}
+
+.page {
+    width: 210mm !important;
+    min-height: 297mm !important;
+    padding: 20mm !important;
+    margin: 10mm auto 20mm auto !important;
+    border: 1px #D3D3D3 solid !important;
+    border-radius: 5px !important;
+    background: white !important;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1) !important;
+}
+
+.subpage {
+    /*padding: 1cm !important;*/
+    height: 257mm !important;
+    outline: 2cm white solid !important;
+}
+
+@media print {
+    html, body {
+        width: 210mm !important;
+        height: 297mm !important;
+        min-width: initial !important;
+    }
+
+    .container {
+        padding: 0 !important;
+        min-width: initial !important;
+        width: 100% !important;
+        max-width: initial !important;
+    }
+
+    .page {
+        margin: 0 !important;
+        border: initial !important;
+        border-radius: initial !important;
+        width: initial !important;
+        min-height: initial !important;
+        box-shadow: initial !important;
+        background: initial !important;
+        page-break-after: always !important;
+    }
+}
+
+
+
+@media print {
+    header, footer, aside, nav, form, iframe, .menu, .hero, .adslot, .navigation {
+        display: none !important;
+    }
+}
+
+
+
+
+
+
+
+
+.cv-header-border {
+    border-top: 1px dashed darkred;
+    width: 100%;
+    border-bottom: 1px dashed darkred;
+    padding: 3px 0px;
+    margin-bottom: 5px;
+}
+
+.cv-header {
+    text-transform: uppercase;
+    font-weight: lighter;
+    margin: 0px;
+}
+
+.education-table-title {
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 0;
+    margin: 0;
+    line-height: 1.15;
+}
+
+.education-table-company {
+    font-weight: bold;
+    text-transform: uppercase;
+    color: royalblue;
+    padding: 0;
+    margin: 0;
+    line-height: 1.15;
+}
+
+.education-table-year {
+    color: darkred;
+    padding: 0;
+    margin: 0;
+    text-transform: uppercase;
+    line-height: 1.15;
+    padding: 0;
+    margin: 0;
+}
+
+.measurables-container {
+    border: 1px dotted var(--blue);
+    padding: 5px;
+}
+
+
+.section {
+    margin-bottom: 15px;
+}
+
+
+.printable-text-normal-size {
+    font-size: 8pt;
+}
+
+.printable-text-header-size {
+    font-size: 12pt;
+}
+
+
+.rating {
+    color: #ffcccb;
+    position: relative;
+    top: -3px;
+}
+
+    .rating.checked {
+        color: var(--red);
+    }
+
+
+
+
+
+/* Edit.cshtml*/
+.animated-form-group { /* div */
+    width: 50%;
+    position: relative;
+    height: 50px;
+    overflow: hidden;
+    /*font-size: 16px;*/
+}
+
+    .animated-form-group input {
+        width: 100%;
+        height: 100%;
+        color: #595f6e;
+        padding-top: 10px;
+        border: none;
+        outline: none;
+    }
+
+    .animated-form-group label {
+        position: absolute;
+        bottom: 0px;
+        left: 0%;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        border-bottom: 1px solid black;
+    }
+
+        .animated-form-group label::after {
+            content: "";
+            position: absolute;
+            left: 0px;
+            bottom: -1px;
+            height: 100%;
+            width: 100%;
+            border-bottom: 3px solid #5fa8d3;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+.animated-control-label-content {
+    position: absolute;
+    bottom: 5px;
+    left: 0px;
+    transition: all 0.3s ease;
+}
+
+.animated-form-group input:focus + .animated-control-label .animated-control-label-content,
+.animated-form-group input:valid + .animated-control-label .animated-control-label-content {
+    transform: translateY(-100%);
+    /*font-size: 14px;*/
+    color: #5fa8d3;
+}
+
+.animated-form-control { /* input */
+}
+
+.animated-control-label { /* label */
+}
+
+.animated-control-label-content { /* span */
+}
+
+.animated-form-group input:focus + .animated-control-label::after,
+.animated-form-group input:valid + .animated-control-label::after {
+    transform: translateX(0%);
+}

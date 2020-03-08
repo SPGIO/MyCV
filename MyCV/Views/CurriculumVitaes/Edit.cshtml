@@ -1,0 +1,105 @@
+﻿@model MyCV.Models.CurriculumVitae
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>CurriculumVitae</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label asp-for="ShortResume" class="control-label"></label>
+                    <textarea asp-for="ShortResume" class="form-control" rows="5"></textarea>
+                    @*<input asp-for="ShortResume" class="form-control" />*@
+                    <span asp-validation-for="ShortResume" class="text-danger"></span>
+                </div>
+
+
+                @* Personal *@
+                @Html.HiddenFor(m => m.PersonalInformation.Id)
+                <div class="form-group col-sm-12 col-md-4">
+                    <label asp-for="PersonalInformation.FirstName" class="control-label"></label>
+                    <input asp-for="PersonalInformation.FirstName" class="form-control" />
+                    <span asp-validation-for="PersonalInformation.FirstName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group col-sm-12 col-md-4">
+                    <label asp-for="PersonalInformation.MiddleName" class="control-label"></label>
+                    <input asp-for="PersonalInformation.MiddleName" class="form-control" />
+                    <span asp-validation-for="PersonalInformation.MiddleName" class="text-danger"></span>
+                </div>
+                <div class="form-group col-sm-12 col-md-4">
+                    <label asp-for="PersonalInformation.LastName" class="control-label"></label>
+                    <input asp-for="PersonalInformation.LastName" class="form-control" />
+                    <span asp-validation-for="PersonalInformation.LastName" class="text-danger"></span>
+                </div>
+
+                @* Contact *@
+                <div class="form-group col-sm-12">
+                    <label asp-for="PersonalInformation.PhoneNumber" class="control-label"></label>
+                    <input asp-for="PersonalInformation.PhoneNumber" class="form-control" />
+                    <span asp-validation-for="PersonalInformation.PhoneNumber" class="text-danger"></span>
+                </div>
+                <div class="form-group col-sm-12">
+                    <label asp-for="PersonalInformation.Email" class="control-label"></label>
+                    <input asp-for="PersonalInformation.Email" class="form-control" />
+                    <span asp-validation-for="PersonalInformation.Email" class="text-danger"></span>
+                </div>
+
+                @* Image *@
+                @*<div class="form-group col-sm-12">
+            <label asp-for="PersonalInformation.Address.ImagePath" class="control-label"></label>
+            <input asp-for="PersonalInformation.ImagePath" class="form-control" />
+            <span asp-validation-for="PersonalInformation.ImagePath" class="text-danger"></span>
+        </div>*@
+
+                @Html.HiddenFor(m => m.PersonalInformation.ImageFile.Id)
+                @Html.HiddenFor(m => m.PersonalInformation.ImageFile.Content)
+                <img src="@Model.PersonalInformation.ImageFile.ConvertToString()" class="img-fluid" />
+
+                <div class="form-group col-sm-12">
+                    <label asp-for="PersonalInformation.ImageFile.Content" class="control-label"></label>
+                    <input asp-for="PersonalInformation.ImageFile.Content" type="file" name="image" class="form-control" />
+                    <span asp-validation-for="PersonalInformation.ImageFile.Content" class="text-danger"></span>
+                </div>
+
+
+                @* Address *@
+        
+                <div class="form-group col-sm-12 col-md-4">
+                    <label asp-for="PersonalInformation.Zip" class="control-label"></label>
+                    <input asp-for="PersonalInformation.Zip" class="form-control" />
+                    <span asp-validation-for="PersonalInformation.Zip" class="text-danger"></span>
+                </div>
+                <div class="form-group col-sm-12 col-md-8">
+                    <label asp-for="PersonalInformation.City" class="control-label"></label>
+                    <input asp-for="PersonalInformation.City" class="form-control" />
+                    <span asp-validation-for="PersonalInformation.City" class="text-danger"></span>
+                </div>
+
+                <div class="form-group col-sm-12 col-md-12">
+                    <label asp-for="PersonalInformation.Street" class="control-label"></label>
+                    <input asp-for="PersonalInformation.Street" class="form-control" />
+                    <span asp-validation-for="PersonalInformation.Street" class="text-danger"></span>
+                </div>
+
+
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

@@ -1,0 +1,10 @@
+﻿[
+  {
+    "outputFile": "wwwroot/css/animated_input.css",
+    "inputFile": "wwwroot/css/animated_input.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/wizard.css",
+    "inputFile": "wwwroot/css/wizard.scss"
+  }
+]

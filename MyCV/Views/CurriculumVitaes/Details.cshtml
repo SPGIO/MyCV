@@ -1,0 +1,170 @@
+﻿@model MyCV.Models.CurriculumVitae
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="navigation">
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+<div class="page">
+    <div class="subpage">
+
+        <div class="row">
+            @* Personal information row *@
+            <div class="col-7 text-right">
+                <h1>Curriculum Vitae</h1>
+                <h5 class="text-uppercase">
+                    @Html.DisplayFor(model => model.PersonalInformation.FullName)
+                </h5>
+                <table class="float-right">
+                    <tr>
+                        <td class="text-right printable-text-normal-size font-weight-bold text-uppercase">Contact</td>
+                    </tr>
+                    <tr>
+                        <td class="text-right printable-text-normal-size">@Html.DisplayFor(model => model.PersonalInformation.PhoneNumber)</td>
+                    </tr>
+                    <tr>
+                        <td class="text-right printable-text-normal-size">@Html.DisplayFor(model => model.PersonalInformation.Email)</td>
+                    </tr>
+                    <tr>
+                        <td class="text-right printable-text-normal-size">@Html.DisplayFor(model => model.PersonalInformation.Street)</td>
+                    </tr>
+                    <tr>
+                        <td class="text-right printable-text-normal-size">
+                            @Html.DisplayFor(model => model.PersonalInformation.Zip)
+                            @Html.DisplayFor(model => model.PersonalInformation.City)
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+            <div class="col-5">
+                @{
+                    if (Model.PersonalInformation.ImageFile == null)
+                    {
+                        <img src="~/Images/cvicon.png" style="width: 250px; height: 170px;" />
+                    }
+                    else
+                    {
+                        <img src="@Model.PersonalInformation.ImageFile.ConvertToString()" style="width: 250px; height: 170px;" />
+                    }
+                }
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-7">
+                <div class="cv-header-border">
+                    <h6 class="cv-header printable-text-header-size">Profil</h6>
+                </div>
+                <p class="printable-text-normal-size">
+                    @Html.DisplayFor(model => model.ShortResume)
+
+                </p>
+            </div>
+            <div class="col-5">
+                <div class="cv-header-border">
+                    <h6 class="cv-header printable-text-header-size">Uddannelse</h6>
+                </div>
+                @foreach (var item in Model.Educations)
+                {
+                    await Html.RenderPartialAsync("_ExperienceItemView", item).ConfigureAwait(false);
+                }
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-7">
+                <div class="cv-header-border">
+                    <h6 class="cv-header printable-text-header-size">Erhvervserfaring</h6>
+                </div>
+                @foreach (var item in Model.Jobs)
+                {
+                    await Html.RenderPartialAsync("_ExperienceItemView", item).ConfigureAwait(false);
+                }
+            </div>
+            <div class="col-5">
+
+                <div class="measurables-container">
+                    <div class="row section">
+                        @* Courses Section *@
+                        <div class="col-12">
+                            <h6 class="cv-header printable-text-header-size">Kurser</h6>
+                        </div>
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p class="education-table-title printable-text-normal-size">Scrum Certifikat</p>
+                                </div>
+                                <div class="col-md-12">
+                                    <p class="education-table-company printable-text-normal-size">clean machine</p>
+                                </div>
+                                <div class="col-md-12">
+                                    <p class="education-table-year printable-text-normal-size">2018, 4 uger</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row section">
+                        @* IT Section *@
+                        <div class="col-12">
+                            <h6 class="cv-header printable-text-header-size">IT</h6>
+                        </div>
+                        <div class="col-12">
+                            <div class="row" style="line-height: 1.15;">
+                                <div class="col-6"><p class="education-table-title printable-text-normal-size">Design patterns</p></div>
+                                <div class="col-6">
+                                    <i class="printable-text-normal-size fas fa-circle rating checked"></i>
+                                    <i class="printable-text-normal-size fas fa-circle rating checked"></i>
+                                    <i class="printable-text-normal-size fas fa-circle rating"></i>
+                                    <i class="printable-text-normal-size fas fa-circle rating"></i>
+                                    <i class="printable-text-normal-size fas fa-circle rating"></i>
+                                    <i class="printable-text-normal-size fas fa-circle rating"></i>
+                                </div>
+                                <div class="col-6"><p class="education-table-title printable-text-normal-size">MSSQL</p></div>
+                                <div class="col-6">
+                                    <i class="printable-text-normal-size fas fa-circle rating checked"></i>
+                                    <i class="printable-text-normal-size fas fa-circle rating checked"></i>
+                                    <i class="printable-text-normal-size fas fa-circle rating checked"></i>
+                                    <i class="printable-text-normal-size fas fa-circle rating"></i>
+                                    <i class="printable-text-normal-size fas fa-circle rating"></i>
+                                    <i class="printable-text-normal-size fas fa-circle rating"></i>
+                                </div>
+                                <div class="col-6"><p class="education-table-title printable-text-normal-size">TTD</p></div>
+                                <div class="col-6">
+                                    <i class="printable-text-normal-size fas fa-circle rating checked"></i>
+                                    <i class="printable-text-normal-size fas fa-circle rating checked"></i>
+                                    <i class="printable-text-normal-size fas fa-circle rating checked"></i>
+                                    <i class="printable-text-normal-size fas fa-circle rating checked"></i>
+                                    <i class="printable-text-normal-size fas fa-circle rating checked"></i>
+                                    <i class="printable-text-normal-size fas fa-circle rating"></i>
+                                </div>
+                                <div class="col-6"><p class="education-table-title printable-text-normal-size">Clean Code </p></div>
+                                <div class="col-6">
+                                    <i class="printable-text-normal-size fas fa-circle rating checked"></i>
+                                    <i class="printable-text-normal-size fas fa-circle rating checked"></i>
+                                    <i class="printable-text-normal-size fas fa-circle rating checked"></i>
+                                    <i class="printable-text-normal-size fas fa-circle rating checked"></i>
+                                    <i class="printable-text-normal-size fas fa-circle rating checked"></i>
+                                    <i class="printable-text-normal-size fas fa-circle rating checked"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@*<div>
+        <h4>CurriculumVitae</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-2">
+                @Html.DisplayNameFor(model => model.ShortResume)
+            </dt>
+            <dd class="col-10">
+                @Html.DisplayFor(model => model.ShortResume)
+            </dd>
+        </dl>
+    </div>*@

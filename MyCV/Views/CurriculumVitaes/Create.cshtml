@@ -1,0 +1,206 @@
+﻿@model MyCV.Models.CurriculumVitae
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<form asp-action="Create" id="create_cv_form" enctype="multipart/form-data">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="wrapper">
+        <div id="wizard" class="wizard">
+            <div class="wizard__content">
+                <header class="wizard__header">
+                    <div class="wizard__header-overlay"></div>
+
+                    <div class="wizard__header-content">
+                        <h1 class="wizard__title">Get start with Javascript!</h1>
+                        <p class="wizard__subheading">Start with <span>3</span> simple steps.</p>
+                    </div>
+
+                    <div class="wizard__steps">
+                        <nav class="steps">
+                            <div class="step">
+                                <div class="step__content">
+                                    <p class="step__number"><i class="fa fa-github-alt"></i></p>
+                                    <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                                        <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
+                                        <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+                                    </svg>
+
+                                    <div class="lines">
+                                        <div class="line -start">
+                                        </div>
+
+                                        <div class="line -background">
+                                        </div>
+
+                                        <div class="line -progress">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="step">
+                                <div class="step__content">
+                                    <p class="step__number"><i class="fa fa-book"></i></p>
+                                    <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                                        <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
+                                        <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+                                    </svg>
+
+                                    <div class="lines">
+                                        <div class="line -background">
+                                        </div>
+
+                                        <div class="line -progress">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="step">
+                                <div class="step__content">
+                                    <p class="step__number"><i class="fa fa-group"></i></p>
+                                    <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                                        <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
+                                        <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+                                    </svg>
+
+                                    <div class="lines">
+                                        <div class="line -background">
+                                        </div>
+
+                                        <div class="line -progress">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </header>
+
+
+                <div class="panels">
+                    <div class="panel">
+                        <header class="panel__header">
+                            <h2 class="panel__title">Create a Github account</h2>
+                            <p class="panel__subheading">With github you can show your projects and find new things everyday!</p>
+                        </header>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label asp-for="ShortResume" class="control-label"></label>
+                                <input asp-for="ShortResume" class="form-control" />
+                                <span asp-validation-for="ShortResume" class="text-danger"></span>
+                            </div>
+
+                            @* Personal *@
+                            <div class="form-group col-sm-12 col-md-4">
+                                <label asp-for="PersonalInformation.FirstName" class="control-label"></label>
+                                <input asp-for="PersonalInformation.FirstName" class="form-control" />
+                                <span asp-validation-for="PersonalInformation.FirstName" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-sm-12 col-md-4">
+                                <label asp-for="PersonalInformation.MiddleName" class="control-label"></label>
+                                <input asp-for="PersonalInformation.MiddleName" class="form-control" />
+                                <span asp-validation-for="PersonalInformation.MiddleName" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-sm-12 col-md-4">
+                                <label asp-for="PersonalInformation.LastName" class="control-label"></label>
+                                <input asp-for="PersonalInformation.LastName" class="form-control" />
+                                <span asp-validation-for="PersonalInformation.LastName" class="text-danger"></span>
+                            </div>
+
+                            @* Contact *@
+                            <div class="form-group col-sm-12">
+                                <label asp-for="PersonalInformation.PhoneNumber" class="control-label"></label>
+                                <input asp-for="PersonalInformation.PhoneNumber" class="form-control" />
+                                <span asp-validation-for="PersonalInformation.PhoneNumber" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-sm-12">
+                                <label asp-for="PersonalInformation.Email" class="control-label"></label>
+                                <input asp-for="PersonalInformation.Email" class="form-control" />
+                                <span asp-validation-for="PersonalInformation.Email" class="text-danger"></span>
+                            </div>
+
+                            @* Image *@
+                            @*<div class="form-group col-sm-12">
+                                    <label asp-for="PersonalInformation.ImagePath" class="control-label"></label>
+                                    <input asp-for="PersonalInformation.ImagePath" class="form-control" />
+                                    <span asp-validation-for="PersonalInformation.ImagePath" class="text-danger"></span>
+                                </div>*@
+                            <div class="form-group col-sm-12">
+                                <label asp-for="PersonalInformation.ImageFile" class="control-label"></label>
+                                <input asp-for="PersonalInformation.ImageFile" type="file" class="form-control" />
+                                @*<span asp-validation-for="PersonalInformation.ImageFile" class="text-danger"></span>*@
+                            </div>
+
+                            @* Address *@
+
+                            <div class="form-group col-sm-12 col-md-4">
+                                <label asp-for="PersonalInformation.Zip" class="control-label"></label>
+                                <input asp-for="PersonalInformation.Zip" class="form-control" />
+                                <span asp-validation-for="PersonalInformation.Zip" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-sm-12 col-md-8">
+                                <label asp-for="PersonalInformation.City" class="control-label"></label>
+                                <input asp-for="PersonalInformation.City" class="form-control" />
+                                <span asp-validation-for="PersonalInformation.City" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group col-sm-12 col-md-12">
+                                <label asp-for="PersonalInformation.Street" class="control-label"></label>
+                                <input asp-for="PersonalInformation.Street" class="form-control" />
+                                <span asp-validation-for="PersonalInformation.Street" class="text-danger"></span>
+                            </div>
+
+
+                        </div>
+
+
+                        <p class="panel__content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna culpa qui officia deserunt mollit anim id est laborum.</p>
+
+                        <p class="panel__content">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+
+                    <div class="panel">
+                        <header class="panel__header">
+                            <h2 class="panel__title">Learn more about pure Javascript.</h2>
+                            <p class="panel__subheading">We have cool frameworks, but none is better then VanillaJS</p>
+                        </header>
+
+                        <p class="panel__content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <p class="panel__content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna culpa qui officia deserunt mollit anim id est laborum.</p>
+                    </div>
+
+                    <div class="panel">
+                        <header class="panel__header">
+                            <h2 class="panel__title">Stay in touch with the community.</h2>
+                            <p class="panel__subheading">Community is everything, and here we do some crazy stuff.</p>
+                        </header>
+
+                        <p class="panel__content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna culpa qui officia deserunt mollit anim id est laborum.</p>
+                    </div>
+                </div>
+
+                <div class="wizard__footer">
+                    <button class="button previous">Previous</button>
+                    <button class="button next">Next</button>
+                </div>
+            </div>
+
+            <h1 class="wizard__congrats-message">
+                Congratulations, you are now in a world of pain and suffering!
+            </h1>
+        </div>
+    </div>
+</form>
+
+
+
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

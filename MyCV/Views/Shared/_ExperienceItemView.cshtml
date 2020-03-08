@@ -1,0 +1,38 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model MyCV.Models.Experience
+
+
+<div class="row section">
+    <div class="col-md-12">
+        <p class="education-table-title printable-text-normal-size">
+            @Html.DisplayFor(modelItem => Model.Title)
+        </p>
+    </div>
+    <div class="col-md-12">
+        <p class="education-table-company printable-text-normal-size">
+            @Html.DisplayFor(modelItem => Model.Company)
+        </p>
+    </div>
+    <div class="col-md-12">
+        <p class="education-table-year printable-text-normal-size">
+            @Html.DisplayFor(modelItem => Model.FullDate)
+        </p>
+    </div>
+    @{
+        if (Model is MyCV.Models.IDescribable)
+        {
+
+            if (!string.IsNullOrEmpty((Model as MyCV.Models.IDescribable).Description))
+            {
+                <div class="col-md-12">
+                    <p class="education-table-description printable-text-normal-size">
+                        @Html.DisplayFor(modelItem => (Model as MyCV.Models.IDescribable).Description)
+                    </p>
+                </div>
+            }
+        }
+    }
+</div>
