@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MyCV.Models
 {
-    public abstract class Experience : IDatable, IExperience
+    public class Experience : IDatable, IExperience, IDescribable
     {
         public int Id { get; set; }
         [Required]
@@ -22,13 +22,15 @@ namespace MyCV.Models
         [Required]
         public ExperienceCategory Category { get; set; }
 
+        public string Description { get; set; }
+
         public Experience(string title, string company, DateTime startDate, DateTime endDate)
         {
             if (endDate < startDate)
             {
                 throw new DateTimeTooSmallException();
             }
-            Title = title;            
+            Title = title;
             Company = company;
             StartDate = startDate;
             EndDate = endDate;
@@ -37,7 +39,8 @@ namespace MyCV.Models
         public string FullDate => (
             StartDate == EndDate
             ? StartDate.Year.ToString(CultureInfo.CurrentCulture)
-            : string.Format(CultureInfo.CurrentCulture,"{0} - {1}" , StartDate.Year, EndDate.Year)
+            : string.Format(CultureInfo.CurrentCulture, "{0} - {1}", StartDate.Year, EndDate.Year)
             );
+
     }
 }

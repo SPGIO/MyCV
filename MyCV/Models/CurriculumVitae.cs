@@ -14,27 +14,28 @@ namespace MyCV.Models
         public string ShortResume { get; set; }
         [Required]
         public PersonalInformation PersonalInformation { get; set; }
-       
+
 
         public string ShortResumeWithThreeDots(int maxLength)
         {
             if (ShortResume.Length < maxLength)
                 return ShortResume;
-            return ShortResume.Substring(0,maxLength) + "...";
+            return ShortResume.Substring(0, maxLength) + "...";
         }
 
-        public virtual ICollection<Education> Educations { get; private set; }
-        public virtual ICollection<WorkExperience> Jobs { get; private set; }
+        public virtual ICollection<Experience> Experience { get; private set; }
         public ApplicableCompany ApplicableCompany { get; set; }
 
         public virtual ICollection<Skill> Skills { get; private set; }
         public CurriculumVitae()
         {
-            Educations = new List<Education>();
-            Jobs = new List<WorkExperience>();
+            Experience = new List<Experience>();
             Skills = new List<Skill>();
-
         }
 
+        public List<Experience> GetEducations()
+        {
+            return Experience.Where(e => e.Category.Category == "Education").ToList();
+        }
     }
 }

@@ -67,7 +67,7 @@
                 <div class="cv-header-border">
                     <h6 class="cv-header printable-text-header-size">Uddannelse</h6>
                 </div>
-                @foreach (var item in Model.Educations)
+                @foreach (var item in Model.GetEducations())
                 {
                     await Html.RenderPartialAsync("_ExperienceItemView", item).ConfigureAwait(false);
                 }
@@ -78,7 +78,7 @@
                 <div class="cv-header-border">
                     <h6 class="cv-header printable-text-header-size">Erhvervserfaring</h6>
                 </div>
-                @foreach (var item in Model.Jobs)
+                @foreach (var item in Model.Experience)
                 {
                     await Html.RenderPartialAsync("_ExperienceItemView", item).ConfigureAwait(false);
                 }
