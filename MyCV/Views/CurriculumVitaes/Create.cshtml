@@ -4,7 +4,10 @@
     ViewData["Title"] = "Create";
 }
 
-<form asp-action="Create" id="create_cv_form" enctype="multipart/form-data">
+
+
+
+<form id="create_cv_form" asp-controller="CurriculumVitaes" asp-action="Create" enctype="multipart/form-data" >
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
     <div class="wrapper">
@@ -14,15 +17,15 @@
                     <div class="wizard__header-overlay"></div>
 
                     <div class="wizard__header-content">
-                        <h1 class="wizard__title">Get start with Javascript!</h1>
-                        <p class="wizard__subheading">Start with <span>3</span> simple steps.</p>
+                        <h1 class="wizard__title">Kom i gang med din CV profil!</h1>
+                        <p class="wizard__subheading">Start med <span>3</span> simple skridt.</p>
                     </div>
 
                     <div class="wizard__steps">
                         <nav class="steps">
                             <div class="step">
                                 <div class="step__content">
-                                    <p class="step__number"><i class="fa fa-github-alt"></i></p>
+                                    <p class="step__number"><i class="fas fa-user-edit"></i></p>
                                     <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
                                         <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
                                         <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
@@ -84,14 +87,14 @@
                 <div class="panels">
                     <div class="panel">
                         <header class="panel__header">
-                            <h2 class="panel__title">Create a Github account</h2>
-                            <p class="panel__subheading">With github you can show your projects and find new things everyday!</p>
+                            <h2 class="panel__title">Opret en CV profil</h2>
+                            <p class="panel__subheading">Med en CV profil kan du nemt opdatere dit CV så det passer til lige netop det job du søger!</p>
                         </header>
 
                         <div class="form-row">
                             <div class="form-group col-md-12">
                                 <label asp-for="ShortResume" class="control-label"></label>
-                                <input asp-for="ShortResume" class="form-control" />
+                                <textarea asp-for="ShortResume" class="form-control" rows="5"></textarea>
                                 <span asp-validation-for="ShortResume" class="text-danger"></span>
                             </div>
 
@@ -157,11 +160,6 @@
 
 
                         </div>
-
-
-                        <p class="panel__content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna culpa qui officia deserunt mollit anim id est laborum.</p>
-
-                        <p class="panel__content">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                     </div>
 
                     <div class="panel">
@@ -204,3 +202,6 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
+@section Scripts {
+   <script src="~/js/wizard.js"></script>
+}

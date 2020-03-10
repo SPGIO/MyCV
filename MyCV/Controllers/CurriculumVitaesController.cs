@@ -83,7 +83,7 @@ namespace MyCV.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(CurriculumVitae curriculumVitae, IFormFile image)
+        public async Task<ActionResult> Create(CurriculumVitae curriculumVitae, IFormFile image)
         {
             if (ModelState.IsValid)
             {
@@ -103,6 +103,8 @@ namespace MyCV.Controllers
                 return RedirectToAction(nameof(Index));
 
             }
+
+
             return View(curriculumVitae);
         }
 

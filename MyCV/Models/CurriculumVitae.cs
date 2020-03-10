@@ -12,6 +12,7 @@ namespace MyCV.Models
         [Key]
         public int Id { get; set; }
         [Required]
+        [Display(Name = "Profil")]
         public string ShortResume { get; set; }
         [Required]
         public PersonalInformation PersonalInformation { get; set; }
@@ -47,10 +48,6 @@ namespace MyCV.Models
             };
 
             return listofGroupedExperienceAndCategories;
-
-
-
-
         }
 
 
@@ -67,8 +64,11 @@ namespace MyCV.Models
                     )
                     );
 
-            return groupedAndOrdered.OrderBy(exp => experiencesWithoutEducation.First(cat => cat.Category.Category == exp.Name).Category.Order).ToList();
-
+            return groupedAndOrdered.OrderBy(
+                    exp => experiencesWithoutEducation.First
+                    (
+                        cat => cat.Category.Category == exp.Name
+                    ).Category.Order).ToList();
         }
 
     }

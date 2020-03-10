@@ -79,13 +79,13 @@ class Panels {
             if (i !== currentStep) {
                 if (i < currentStep) panels[i].classList.add('movingOutBackward');
                 else if (i > currentStep) panels[i].classList.add('movingOutFoward');
-                    panels[i].classList.add('d-none');
+                panels[i].classList.add('d-none');
             } else {
                 panels[i].classList.add('movingIn');
             }
         }
         this.updatePanelsContainerHeight();
-        
+
     }
 
 
@@ -104,10 +104,17 @@ class Wizard {
         this.steps = new Steps(this.wizard);
         this.stepsQuantity = this.steps.getStepsQuantity();
         this.currentStep = this.steps.currentStep;
-
         this.concludeControlMoveStepMethod = this.steps.handleConcludeStep.bind(this.steps);
         this.wizardConclusionMethod = this.handleWizardConclusion.bind(this);
+        this.ConcludePressed = false;
+
     }
+
+    preventFormSubmit() {
+        return wizard.ConcludePressed;
+    }
+
+
 
     updateButtonsStatus() {
         if (this.currentStep === 0)
@@ -118,11 +125,21 @@ class Wizard {
 
     updateCurrentStep(movement) {
         this.currentStep += movement;
+        if (this.currentStep === 3) this.ConcludePressed = true;
         this.steps.setCurrentStep(this.currentStep);
         this.panels.setCurrentStep(this.currentStep);
 
         this.handleNextStepButton();
         this.updateButtonsStatus();
+
+        //$(this.form).on('click', (event) => {
+        //    if (this.currentStep === this.stepsQuantity - 2) {
+        //        $(this.form).bind('click', function (e) { e.preventDefault() });
+        //    }
+        //    if (this.currentStep === this.stepsQuantity - 1) {
+        //        $(this.form).unbind('click');
+        //    }
+        //});
     }
 
     handleNextStepButton() {
@@ -132,17 +149,21 @@ class Wizard {
             this.nextControl.removeEventListener('click', this.nextControlMoveStepMethod);
             this.nextControl.addEventListener('click', this.concludeControlMoveStepMethod);
             this.nextControl.addEventListener('click', this.wizardConclusionMethod);
+
         } else {
             this.nextControl.innerHTML = 'Next';
 
             this.nextControl.addEventListener('click', this.nextControlMoveStepMethod);
             this.nextControl.removeEventListener('click', this.concludeControlMoveStepMethod);
             this.nextControl.removeEventListener('click', this.wizardConclusionMethod);
+
+
         }
     }
 
     handleWizardConclusion() {
         this.wizard.classList.add('completed');
+        this.ConcludePressed = true;
     };
 
     addControls(previousControl, nextControl) {
@@ -172,12 +193,21 @@ class Wizard {
 
         return fowardMov || backMov;
     }
+
+    addForm(form) {
+        this.form = form;
+        $(this.form).submit(this.preventFormSubmit);
+        //$(this.form).on('click', (event) => { return false; });
+    }
 }
 
 let wizardElement = document.getElementById('wizard');
 let wizard = new Wizard(wizardElement);
 let buttonNext = document.querySelector('.next');
 let buttonPrevious = document.querySelector('.previous');
-
+let form = $("#create_cv_form");
+wizard.addForm(form);
 wizard.addControls(buttonPrevious, buttonNext);
+
+
 
